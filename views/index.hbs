@@ -1,0 +1,33 @@
+<section>
+    <div class="container-fluid">
+        <h3 class = "mx-auto text-center">Your expenses on Nov 2023</h3>
+   
+   
+   <div class="row mx-auto">
+
+    <div class="col-md-10 mx-auto">
+        <table class="table table-striped table-hover table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Sl.No</th>
+      <th scope="col">Date</th>
+      <th scope="col">Item</th>
+      <th scope="col">Amount</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+    {{#each expenses}}
+    <tr>
+      <th scope="row">{{_id}}</th>
+      <td>{{date}}</td>
+      <td>{{item}}</td>
+      <td>{{amount}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+    </div>
+   </div>
+   
+    </div>
+</section>
