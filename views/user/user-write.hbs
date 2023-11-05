@@ -1,62 +1,88 @@
 <section class="user-write container-fluid">
 
-<div class="row mx-auto">
+  <div class="row mx-auto">
 
-  <div class="col-md-10 mx-auto pt-4">
-<div class="row text-light" id="markdowncontent">
+    <div class="col-md-10 mx-auto pt-4">
+      <div class="row text-light" id="markdowncontent">
 
-</div>
-<div class="row mx-auto">
-  <h3 class="mx-auto">Write your diary</h3>
-</div>
-  
-<form class="form-group" action="/user-write" method="post">
+      </div>
+      <div class="row mx-auto">
+        <h3 class="mx-auto">Enter Expense Details</h3>
+      </div>
 
-<div id="content">
+      <form class="form-group" action="/user-write" method="post">
 
-</div>
-<div class="row mx-auto mt-2 mb-3">
-   <input type="text" name="username" id="username" value="{{user.username}}">
-   <input type="text" name="timestamp" id="timestamp">
-   <input type="text" name="datestamp" id="datestamp">
+        <div id="content">
 
-    <label for="heading">Enter headline</label>
-  <input type="text" required name="heading" id="heading" class="form-control" placeholder="" aria-describedby="helpId" style=" background-color:#121212;color:#c7bfaf;">
+        </div>
+        <div class="row mx-auto mt-2 mb-3">
+          <input type="text" name="username" id="username" value="{{user.username}}">
+          <input type="text" name="timestamp" id="timestamp">
+          <input type="text" name="datestamp" id="datestamp">
 
- </div>
+        </div>
+        
+<section class="row mx-auto mt-5">
+    <div class="col-md-6 mx-auto">
+        <form class="row g-3 mx-auto" method="POST" action="/user-write">
 
- <div class="row mx-auto">
 
-   <label for="content">Enter content</label>
- <textarea required style=" background-color:#121212;color:#c7bfaf;" name="content" id="content" class="form-control" cols="100" width="100%" rows="10"></textarea>
- </div>
 
- <div class="row mx-auto mt-3">
+            <div class="form-group row mb-2">
+                <label class="col-md-6" for="inputItem" class="form-label">Item</label>
+                <select class="col-md-6" id="inputItem" name="inputItem" class="form-select">
+                    <option>Groceries(Market)</option>
+                    <option>BlinkIt</option>
+                    <option>Zepto</option>
+                </select>
+            </div>
+            <div class="form-group row mb-2">
+                <label class="col-md-6" for="inputItems" class="form-label">Items</label>
+                <input class="col-md-6" type="text" placeholder="brinjal,curd,chillies" name="inputItems"
+                    class="form-control" id="inputItems">
+            </div>
+            <div class="form-group row mb-2">
+                <label class="col-md-6" for="inputAmount" class="form-label">Amount</label>
+                <input class="col-md-6" type="number" name="inputAmount" class="form-control" id="inputAmount">
+            </div>
+            <div class="form-group row mb-2">
+                <label class="col-md-6" for="inputDate" class="form-label">Date</label>
+                <input class="col-md-6" type="date" name="inputDate" class="form-control" id="inputDate">
+            </div>
+             {{!-- <div class="form-group row mb-2">
+                <label class="col-md-6" for="file" class="form-label">Upload screenshot</label>
+                <input class="col-md-6 b-primary-1" type="file" name="file" accept=".jpg, .png, .pdf" class="form-control" id="date">
+            </div> --}}
 
-   <label for="markdown">Markdown content</label>
- <textarea required style=" background-color:#121212;color:#c7bfaf;" name="markdown" id="markdown" class="form-control" cols="100" width="100%" rows="10"></textarea>
- </div>
- <script>
-  var timeStampInput=document.getElementById('timestamp');
-  var usernameInput=document.getElementById('username');
-  var dateStampInput=document.getElementById('datestamp');
-  var content=document.getElementById('markdowncontent');
-  var date=new Date();
-  timeStampInput.value=date.toString().substr(16,9);
-  dateStampInput.value=date.toLocaleDateString();
-  usernameInput.style.display='none';
-  timeStampInput.style.display='none';
-  dateStampInput.style.display='none';
- 
 
-</script>
-<script>
- 
-</script>
 
-<button class="btn form-control mt-4" type="submit">Submit</button>
-</form>
-</div>
-</div>
+            <div class="col-12 mt-4 text-center mx-auto">
+                <button type="submit" class="btn btn-info d-block w-100">Enter Data</button>
+            </div>
+        </form>
+    </div>
+</section>
+        <script>
+          var timeStampInput = document.getElementById('timestamp');
+          var usernameInput = document.getElementById('username');
+          var dateStampInput = document.getElementById('datestamp');
+          var content = document.getElementById('markdowncontent');
+          var date = new Date();
+          timeStampInput.value = date.toString().substr(16, 9);
+          dateStampInput.value = date.toLocaleDateString();
+          usernameInput.style.display = 'none';
+          timeStampInput.style.display = 'none';
+          dateStampInput.style.display = 'none';
+
+
+        </script>
+        <script>
+
+        </script>
+
+        {{!-- <button class="btn form-control mt-4" type="submit">Submit</button> --}}
+      </form>
+    </div>
+  </div>
 
 </section>

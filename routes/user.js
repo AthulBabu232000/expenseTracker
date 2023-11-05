@@ -1,10 +1,8 @@
 var express = require("express");
 var router = express.Router();
 var userHelper = require("../helpers/user-helper");
-var diaryHelper = require("../helpers/diary-helper");
-var md= require('markdown-it')({
-  html:false,
-});
+var expenseHelper = require("../helpers/expense-helper");
+
 
 
 /* GET home page. */
@@ -56,37 +54,41 @@ router.get("/logout", (req, res) => {
   res.redirect("/");
 });
 router.get("/noAccount", (req, res) => {
-  res.render("user/not");
+  res.render("/");
 });
 router.post("/user-write", (req, res) => {
 
   let user = req.session.user;
  
   if (user) {
-    diaryHelper.enterDiary(req.body).then((response) => {
+    expenseHelper.enterDiary(req.body).then((response) => {
       res.redirect("/");
     });
   } else {
     res.redirect("/noAccount");
   }
 });
-
+router.get("/allexpenses",function(req,res,next){
+  expenseHelper.getExpenses().then((expenseCont)=>{
+    res.render("user/list-expenses",{expenseCont});
+  })
+})
   router.get("/", function (req, res, next) {
 
     let user = req.session.user;
    
     if (user) {
 
-      diaryHelper.getAllDiary(user).then((diaryContent) => {
+      expenseHelper.getAllDiary(user).then((diaryContent) => {
   
         // var result = md.render(diaryContent.markdown);
-        console.log(diaryContent.markdown);
+ 
         console.log(diaryContent);
    
         res.render("user/user-read", { diaryContent:diaryContent,user:user});
       });
     } else {
-      res.redirect("/noAccount");
+      res.redirect("/login");
     }
   
     });

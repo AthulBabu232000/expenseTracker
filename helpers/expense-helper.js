@@ -1,15 +1,12 @@
 var db = require("../config/connection");
 var collection = require("../config/collections");
-var md= require('markdown-it')({
-  html:false,
-});
+
 module.exports = {
   enterDiary: (diaryData) => {
     return new Promise(async (resolve, reject) => {
-      diaryData.markdown=md.render(diaryData.markdown);
-      console.log(diaryData.markdown);
+     
       db.get()
-        .collection(collection.DIARY_COLLECTION)
+        .collection(collection.EXPENSE_COLLECTION)
         .insertOne(diaryData)
         .then((data) => {
           console.log("data about to enter");
@@ -21,13 +18,20 @@ module.exports = {
     });
   },
   getAllDiary:(filterUser)=>{
-
     return new Promise(async(resolve, reject)=>{
         console.log(filterUser);
-        let diaryContent=await db.get().collection(collection.DIARY_COLLECTION).find({username:filterUser.username}).toArray();
+        let diaryContent=await db.get().collection(collection.EXPENSE_COLLECTION).find({username:filterUser.username}).toArray();
         resolve(diaryContent);
     });
-}
+},
+
+  getExpenses:()=>{
+    return new Promise(async(resolve, reject)=>{
+    
+      let expenseContent=await db.get().collection(collection.EXPENSE_COLLECTION).find().toArray();
+      resolve(expenseContent);
+  });
+  }
 
   
 };
