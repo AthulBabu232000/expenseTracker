@@ -1,2 +1,2 @@
-# expenseTracker
-ExpenseTracker that I built for personal use
+# Node-56-Diary-App
+tinker hub node js diary app
