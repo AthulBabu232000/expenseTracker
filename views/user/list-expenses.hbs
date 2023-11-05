@@ -1,42 +1,46 @@
 <section class="user-read container-fluid">
   <div class="row">
-    <div class="col-12 mx-auto">
+    <div class="col-12 col-md-5 mx-auto">
       <div class="input-group mb-3">
         <input type="date" class="form-control" id="datechecker" placeholder="Recipient's username"
           aria-label="Recipient's username" aria-describedby="basic-addon2">
         <div class="input-group-append">
-          <button class="btn" type="button" onclick="findData()">Find</button>
+          <button class="btn" type="button" onclick="findData()">SEARCH</button>
         </div>
       </div>
 
 
       <div class="row">
-        <h2 class="mx-auto text-capitalize mt-3 mb-5">ALL PURCHASES</h2>
+        <h5 class="mx-auto text-capitalize mt-3 mb-5">ALL PURCHASES <span>₹{{finalAmount}}/₹4500</span></h5>
       </div>
     </div>
   </div>
   {{#each expenseCont}}
   <div class="card-deck mb-3">
     <div class="card">
-      <div class="card-header">
+      <div class="card-header bg-info">
         <div class="row mx-auto">
-          <div class="col-6 mx-auto d-flex justify-content-start dateStamp">
+          <div class="col-4 mx-auto d-flex justify-content-start dateStamp text-light">
           {{this.datestamp}}
           </div>
-          <div class="col-6 mx-auto d-flex justify-content-end">
+          <div class="col-4 mx-auto d-flex justify-content-center font-weight-bold text-light">
+           {{this.inputItem}}
+           </div>
+          <div class="col-4 mx-auto d-flex justify-content-end text-light">
            {{this.timestamp}}
           </div>
         </div>
       </div>
 
       <div class="card-body">
-        <h5 class="card-title mx-auto text-center text-capitalize py-2"
-        >{{this.inputItem}}</h5>
-        <p class="card-text">{{this.inputItems}}</p>
-        <p class="card-text">₹{{this.inputAmount}}</p>
+   
+        <p class="card-text"><span class="font-weight-bold">Items:</span> {{this.inputItems}}</p>
+        <p class="card-text"><span class="font-weight-bold">Amount:</span> ₹{{this.inputAmount}}</p>
+        <p class="card-text"><span class="font-weight-bold">Remarks: </span>{{this.inputRemarks}}</p>
+     
       </div>
-      <div class="card-footer ml-auto">
-        <p class="">{{this.username}}</p>
+      <div class="card-header bg-info text-light font-weight-bold">
+      {{this.username}}
       </div>
     </div>
   </div>

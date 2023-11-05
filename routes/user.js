@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var userHelper = require("../helpers/user-helper");
 var expenseHelper = require("../helpers/expense-helper");
+var collect=require("../config/collections");
 
 
 
@@ -15,7 +16,7 @@ router.get("/write", function (req, res, next) {
     res.render("user/user-write", { title: "Express", admin: false, user: user});
  
   }else{
-    res.redirect('/noAccount');
+    res.redirect('/login');
   }
 });
 router.get("/login", (req, res) => {
@@ -70,7 +71,13 @@ router.post("/user-write", (req, res) => {
 });
 router.get("/allexpenses",function(req,res,next){
   expenseHelper.getExpenses().then((expenseCont)=>{
-    res.render("user/list-expenses",{expenseCont});
+    let spentAmount=0;
+    for(let i=0;i<expenseCont.length;i++){
+spentAmount+=parseInt(expenseCont[i].inputAmount);
+    }
+    let finalAmount=collect.WALLET_BALANCE-spentAmount;
+    spentAmount=0;
+    res.render("user/list-expenses",{expenseCont,finalAmount});
   })
 })
   router.get("/", function (req, res, next) {
@@ -79,13 +86,16 @@ router.get("/allexpenses",function(req,res,next){
    
     if (user) {
 
-      expenseHelper.getAllDiary(user).then((diaryContent) => {
+      expenseHelper.getAllDiary(user).then((expenseContent) => {
   
         // var result = md.render(diaryContent.markdown);
- 
-        console.log(diaryContent);
-   
-        res.render("user/user-read", { diaryContent:diaryContent,user:user});
+        let spentAmount=0;
+        for(let i=0;i<expenseContent.length;i++){
+    spentAmount+=parseInt(expenseContent[i].inputAmount);
+        }
+        let finalAmount=(collect.WALLET_BALANCE/3)-spentAmount;
+   spentAmount=0;
+        res.render("user/user-read", { expenseContent:expenseContent,user:user,finalAmount});
       });
     } else {
       res.redirect("/login");
