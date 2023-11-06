@@ -28,7 +28,7 @@ module.exports = {
   doLogin: (userData) => {
     return new Promise(async (resolve, reject) => {
       let response = { status: false };
-      await console.log(userData.username);
+      // await console.log(userData.username);
       let user = await db
         .get()
         .collection(collection.USER_COLLECTION)
