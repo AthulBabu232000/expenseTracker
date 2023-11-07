@@ -39,6 +39,9 @@ module.exports = {
           response.user = user;
           response.status = true;
         } else {
+          console.log(userData.username);
+          console.log(userData.password);
+          console.log(user.password);
           console.log("Login failed");
         }
       } else {
