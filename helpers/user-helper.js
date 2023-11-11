@@ -14,7 +14,7 @@ module.exports = {
           .collection(collection.USER_COLLECTION)
           .insertOne(userData)
           .then((data) => {
-            console.log(data);
+            // console.log(data);
             resolve(data);
           });
       });
@@ -39,9 +39,9 @@ module.exports = {
           response.user = user;
           response.status = true;
         } else {
-          console.log(userData.username);
-          console.log(userData.password);
-          console.log(user.password);
+          // console.log(userData.username);
+          // console.log(userData.password);
+          // console.log(user.password);
           console.log("Login failed");
         }
       } else {

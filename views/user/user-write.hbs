@@ -10,7 +10,7 @@
         <h3 class="mx-auto">Enter Expense Details</h3>
       </div>
 
-      <form class="form-group" action="/user-write" method="post">
+      <form class="form-group" action="/user-write" method="post"enctype="multipart/form-data">
 
         <div id="content">
 
@@ -50,6 +50,10 @@
             <div class="form-group row mb-2">
                 <label class="col-md-6" for="inputRemarks" class="form-label">Remarks</label>
                 <textarea class="col-md-6" type="text" name="inputRemarks" class="form-control" id="inputRemarks"></textarea>
+            </div>
+               <div class="form-group row mb-2">
+                <label class="col-md-6" for="inputImage" class="form-label">Amount</label>
+                <input class="col-md-6" type="file" name="inputImage" class="form-control" id="inputImage">
             </div>
              {{!-- <div class="form-group row mb-2">
                 <label class="col-md-6" for="file" class="form-label">Upload screenshot</label>

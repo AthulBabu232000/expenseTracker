@@ -3,6 +3,7 @@ var collection = require("../config/collections");
 
 module.exports = {
   enterDiary: (diaryData) => {
+    console.log(diaryData);
     return new Promise(async (resolve, reject) => {
      
       db.get()

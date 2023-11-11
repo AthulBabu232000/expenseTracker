@@ -60,7 +60,7 @@ router.get("/noAccount", (req, res) => {
 router.post("/user-write", (req, res) => {
 
   let user = req.session.user;
- 
+
   if (user) {
     expenseHelper.enterDiary(req.body).then((response) => {
       res.redirect("/");
