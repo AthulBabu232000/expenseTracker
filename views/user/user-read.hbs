@@ -12,7 +12,8 @@
       <div class="card-header text-light">
         <div class="row mx-auto">
           <div class="col-5 mx-auto d-flex justify-content-start dateStamp">
-          {{this.datestamp}}
+            {{!-- {{this.datestamp}} --}}
+            {{this.dateOfPurchase}}
           </div>
           <div class="col-7 mx-auto d-flex justify-content-center">
             {{this.inputItem}}
@@ -21,24 +22,83 @@
       </div>
 
       <div class="card-body">
- 
+
         <p class="card-text"><span class="font-weight-bold">Items: </span>{{this.inputItems}}</p>
         <p class="card-text"><span class="font-weight-bold">Amount: </span>₹{{this.inputAmount}}</p>
         <p class="card-text"><span class="font-weight-bold">Remarks: </span>{{this.inputRemarks}}</p>
-    
+
+        {{#if this.filename}}
+        <img src="images/{{this.filename}}" class="img-fluid img-responsive d-block mx-auto" alt="" srcset="">
+        {{else}}
+        <p class="card-text alert-warning p-2">No image uploaded</p>
+        {{/if}}
       </div>
-      <div class="card-footer text-uppercase">
+      <div class="card-footer text-uppercase d-flex justify-content-between">
         {{this.username}}
+
+        <a type="button" class="btn btn-outline-danger" style="box-shadow:none;" data-toggle="modal"
+          data-target="#exampleModal{{this._id}}">Delete Transaction</a>
+
       </div>
     </div>
   </div>
-  <script>
 
 
 
 
+  <div class="modal fade" id="exampleModal{{this._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title alert-danger alert text-center w-100 p-2 mx-auto" id="exampleModalLabel">Delete the
+            expense?</h5>
+        </div>
+        <div class="modal-body">
+          <div class="card-deck mb-3">
+            <div class="card">
+              <div class="card-header text-light">
+                <div class="row mx-auto">
+                  <div class="col-5 mx-auto d-flex justify-content-start dateStamp">
+                    {{!-- {{this.datestamp}} --}}
+                  </div>
+                  <div class="col-7 mx-auto d-flex justify-content-center">
+                    {{this.inputItem}}
+                  </div>
+                </div>
+              </div>
 
+              <div class="card-body">
 
+                <p class="card-text"><span class="font-weight-bold">Items: </span>{{this.inputItems}}</p>
+                <p class="card-text"><span class="font-weight-bold">Amount: </span>₹{{this.inputAmount}}</p>
+                <p class="card-text"><span class="font-weight-bold">Remarks: </span>{{this.inputRemarks}}</p>
+
+                {{#if this.filename}}
+                <img src="images/{{this.filename}}" class="img-fluid img-responsive d-block mx-auto" alt="" srcset="">
+                {{else}}
+                <p class="card-text alert-warning p-2">No image uploaded</p>
+                {{/if}}
+              </div>
+              <div class="card-footer text-uppercase">
+                {{this.username}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+
+          <form method="post" action="/delete-expense">
+            <input type="hidden" name="expenseId" value="{{this._id}}">
+            <button type="submit" class="btn btn-danger">Delete</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{!-- <script>
     function findData() {
       var datepreStamp = document.querySelectorAll('.dateStamp');
       console.log(datepreStamp);
@@ -48,18 +108,18 @@
       var dateCheckerMonth = parseInt(dateCheckerInner[1]);
       var dateCheckerYear = parseInt(dateCheckerInner[0]);
       for (let i = 0; i < datepreStamp.length; i++) {
-        var dateStampBody=document.getElementsByClassName('dateStamp')[i];
+        var dateStampBody = document.getElementsByClassName('dateStamp')[i];
         var dateStamp = document.getElementsByClassName('dateStamp')[i].innerHTML.toString().trim();
         var dateStampInner = dateStamp.split('/');
         var dateStampDay = parseInt(dateStampInner[1]);
         var dateStampMonth = parseInt(dateStampInner[0]);
         var dateStampYear = parseInt(dateStampInner[2]);
-        if(dateCheckerDay===dateStampDay && dateCheckerMonth===dateStampMonth && dateCheckerYear===dateStampYear){
+        if (dateCheckerDay === dateStampDay && dateCheckerMonth === dateStampMonth && dateCheckerYear === dateStampYear) {
           console.log("all are same")
-          dateStampBody.parentElement.parentElement.parentElement.parentElement.style.display='block';
-        }else{
+          dateStampBody.parentElement.parentElement.parentElement.parentElement.style.display = 'block';
+        } else {
           console.log("all are different");
-          dateStampBody.parentElement.parentElement.parentElement.parentElement.style.display='none';
+          dateStampBody.parentElement.parentElement.parentElement.parentElement.style.display = 'none';
 
         }
       }
@@ -67,8 +127,7 @@
 
 
     }
-
-  </script>
+  </script> --}}
   {{/each}}
 
 

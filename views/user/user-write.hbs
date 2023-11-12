@@ -3,14 +3,12 @@
   <div class="row mx-auto">
 
     <div class="col-md-10 mx-auto ">
-      <div class="row text-light" id="markdowncontent">
-
-      </div>
+ 
       <div class="row mx-auto">
         <h3 class="mx-auto expenserwriteheader">Enter Expense Details</h3>
       </div>
 
-      <form class="form-group" action="/user-write" method="post"enctype="multipart/form-data">
+      <form class="form-group" action="/user-write" method="post" enctype="multipart/form-data">
 
         <div id="content">
 
@@ -24,7 +22,7 @@
         
 <section class="row mx-auto mt-2">
     <div class="col-md-6 mx-auto">
-        <form class="row mx-auto" method="POST" action="/user-write">
+        <form class="row mx-auto" method="POST" action="/user-write" enctype="multipart/form-data">
             <div class="form-group mb-2">
                 <label  for="inputItem" class="form-label">Item</label>
                 <select  id="inputItem" name="inputItem" class="form-control" required>
@@ -43,6 +41,10 @@
             <div class="form-group  mb-2">
                 <label  for="inputAmount" class="form-label">Amount</label>
                 <input required min="0" type="number" name="inputAmount" class="form-control" id="inputAmount">
+            </div>
+             <div class="form-group  mb-2">
+                <label  for="dateOfPurchase" class="form-label">Date Of Purchase</label>
+                <input required type="date" name="dateOfPurchase" class="form-control" id="dateOfPurchase">
             </div>
             <div class="form-group  mb-2">
                 <label  for="inputRemarks" class="form-label">Remarks</label>

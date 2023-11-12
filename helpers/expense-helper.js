@@ -1,5 +1,6 @@
 var db = require("../config/connection");
 var collection = require("../config/collections");
+const ObjectId=require('mongodb').ObjectId;
 
 module.exports = {
   enterDiary: (diaryData) => {
@@ -32,6 +33,25 @@ module.exports = {
       let expenseContent=await db.get().collection(collection.EXPENSE_COLLECTION).find().toArray();
       resolve(expenseContent);
   });
+  },
+  deleteExpense: (expenseId) => {
+    return new Promise(async (resolve, reject) => {
+   
+
+      db.get()
+        .collection(collection.EXPENSE_COLLECTION)
+        .deleteOne({ _id: ObjectId(expenseId) })
+        .then((data) => {
+          console.log("Expense deleted");
+          console.log(data);
+          resolve(data);
+        })
+        .catch((err) => {
+          console.log("Error deleting expense");
+          console.error(err);
+          reject(err);
+        });
+    });
   }
 
   
