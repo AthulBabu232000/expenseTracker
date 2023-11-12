@@ -14,8 +14,8 @@
 }
 @import url('https://fonts.googleapis.com/css2?family=Hubballi&family=Poppins&display=swap');
 
-body {
-  overflow-x:hidden ;
+body,html{
+  overflow-x:hidden;
   /* font-family: 'Hubballi', cursive; */
   /* background-color: var(--bgClr); */
 /* font-family: 'Poppins', sans-serif; */
