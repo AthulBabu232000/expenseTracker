@@ -2,12 +2,12 @@
 
   <div class="row mx-auto">
 
-    <div class="col-md-10 mx-auto pt-4">
+    <div class="col-md-10 mx-auto ">
       <div class="row text-light" id="markdowncontent">
 
       </div>
       <div class="row mx-auto">
-        <h3 class="mx-auto">Enter Expense Details</h3>
+        <h3 class="mx-auto expenserwriteheader">Enter Expense Details</h3>
       </div>
 
       <form class="form-group" action="/user-write" method="post"enctype="multipart/form-data">
@@ -15,22 +15,19 @@
         <div id="content">
 
         </div>
-        <div class="row mx-auto mt-2 mb-3">
+        <div class="row mx-auto mb-2">
           <input type="text" name="username" id="username" value="{{user.username}}">
           <input type="text" name="timestamp" id="timestamp">
           <input type="text" name="datestamp" id="datestamp">
 
         </div>
         
-<section class="row mx-auto mt-5">
+<section class="row mx-auto mt-2">
     <div class="col-md-6 mx-auto">
-        <form class="row g-3 mx-auto" method="POST" action="/user-write">
-
-
-
-            <div class="form-group row mb-2">
-                <label class="col-md-6" for="inputItem" class="form-label">Item</label>
-                <select class="col-md-6" id="inputItem" name="inputItem" class="form-select">
+        <form class="row mx-auto" method="POST" action="/user-write">
+            <div class="form-group mb-2">
+                <label  for="inputItem" class="form-label">Item</label>
+                <select  id="inputItem" name="inputItem" class="form-control" required>
                     <option>Groceries(Market)</option>
                     <option>BlinkIt</option>
                     <option>Zepto</option>
@@ -38,22 +35,22 @@
 
                 </select>
             </div>
-            <div class="form-group row mb-2">
-                <label class="col-md-6" for="inputItems" class="form-label">Items</label>
-                <input class="col-md-6" type="text" placeholder="brinjal,curd,chillies" name="inputItems"
+            <div class="form-group  mb-2">
+                <label  for="inputItems" class="form-label">Items</label>
+                <input required  type="text" placeholder="brinjal,curd,chillies" name="inputItems"
                     class="form-control" id="inputItems">
             </div>
-            <div class="form-group row mb-2">
-                <label class="col-md-6" for="inputAmount" class="form-label">Amount</label>
-                <input class="col-md-6" type="number" name="inputAmount" class="form-control" id="inputAmount">
+            <div class="form-group  mb-2">
+                <label  for="inputAmount" class="form-label">Amount</label>
+                <input required min="0" type="number" name="inputAmount" class="form-control" id="inputAmount">
             </div>
-            <div class="form-group row mb-2">
-                <label class="col-md-6" for="inputRemarks" class="form-label">Remarks</label>
-                <textarea class="col-md-6" type="text" name="inputRemarks" class="form-control" id="inputRemarks"></textarea>
+            <div class="form-group  mb-2">
+                <label  for="inputRemarks" class="form-label">Remarks</label>
+                <textarea required  type="text" name="inputRemarks" class="form-control" id="inputRemarks"></textarea>
             </div>
-               <div class="form-group row mb-2">
-                <label class="col-md-6" for="inputImage" class="form-label">Amount</label>
-                <input class="col-md-6" type="file" name="inputImage" class="form-control" id="inputImage">
+               <div class="upload-wrapper">
+                <label  for="inputImage" class="upload-label">Upload Image</label>
+                <input  type="file" name="inputImage" class="form-control" id="inputImage">
             </div>
              {{!-- <div class="form-group row mb-2">
                 <label class="col-md-6" for="file" class="form-label">Upload screenshot</label>
@@ -62,9 +59,9 @@
 
 
 
-            <div class="col-12 mt-4 text-center mx-auto">
-                <button type="submit" class="btn btn-info d-block w-100">Enter Data</button>
-            </div>
+           
+                <button type="submit" class="btn submitbtn d-block w-100 mt-2 text-light">Enter Data</button>
+       
         </form>
     </div>
 </section>

@@ -1,13 +1,13 @@
 <section class="user-read container-fluid">
   <div class="row">
     <div class="col-12 col-md-5 mx-auto">
-      <div class="input-group mb-3">
+      {{!-- <div class="input-group mb-3">
         <input type="date" class="form-control" id="datechecker" placeholder="Recipient's username"
           aria-label="Recipient's username" aria-describedby="basic-addon2">
         <div class="input-group-append">
           <button class="btn" type="button" onclick="findData()">SEARCH</button>
         </div>
-      </div>
+      </div> --}}
 
 
       <div class="row">
@@ -18,17 +18,15 @@
   {{#each expenseCont}}
   <div class="card-deck mb-3">
     <div class="card">
-      <div class="card-header bg-info">
+      <div class="card-header">
         <div class="row mx-auto">
-          <div class="col-4 mx-auto d-flex justify-content-start dateStamp text-light">
+          <div class="col-5 mx-auto d-flex justify-content-start dateStamp text-light">
           {{this.datestamp}}
           </div>
-          <div class="col-4 mx-auto d-flex justify-content-center font-weight-bold text-light">
+          <div class="col-7 mx-auto d-flex justify-content-center text-light">
            {{this.inputItem}}
            </div>
-          <div class="col-4 mx-auto d-flex justify-content-end text-light">
-           {{this.timestamp}}
-          </div>
+   
         </div>
       </div>
 
@@ -39,7 +37,7 @@
         <p class="card-text"><span class="font-weight-bold">Remarks: </span>{{this.inputRemarks}}</p>
      
       </div>
-      <div class="card-header bg-info text-light font-weight-bold">
+      <div class="card-footer text-uppercase">
       {{this.username}}
       </div>
     </div>

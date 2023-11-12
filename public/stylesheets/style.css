@@ -8,8 +8,8 @@
 
 :root{
  --bgClr:#000000;
- --secClr:#0f9eea;
- --crdClr:#121212;
+ --secClr:#E53F71;
+ --crdClr:#FFF;
 
 }
 @import url('https://fonts.googleapis.com/css2?family=Hubballi&family=Poppins&display=swap');
@@ -27,15 +27,70 @@ body {
   padding-top:20px;
 }
 
+.navbar{
+  background-color:var(--secClr);
+}
+.navbar a{
+  color:var(--crdClr);
+}
+.navbar-toggler{
+  border:1px solid var(--crdClr);
+}
+.fa-solid.fa-wallet{
+color:var(--crdClr);
+}
+.dropdown-menu{
+  background-color:var(--secClr);
+  border:1px solid var(--crdClr)
+}
 
-
-
-@media only screen and (max-width:540px){
-  body{
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-
-  }
-  .noAccount h2{
-    font-size:17px !important;
-  }
+.user-write input,#login input,.user-write  select, .user-write textarea{
+border:1px solid var(--secClr);
+box-shadow:none;
+}
+#login h3{
+  color:var(--secClr);
+}
+#login .loginbtn{
+  background-color: var(--secClr);
+  color:var(--crdClr);
+  font-weight:bold;
+}
+input, textarea, select{
+  box-shadow:none !important;
+}
+.user-write input[type="file"]{
+  position: absolute;
+  z-index: -1;
+  top: 10px;
+  left: 8px;
+  font-size: 17px;
+  color: #b8b8b8;
+  visibility: hidden;
+}
+.user-write .upload-wrapper{
+  position: relative;
+}
+.user-write .upload-label{
+  display: inline-block;
+  padding: 12px 18px;
+  cursor: pointer;
+  border-radius: 5px;
+  border:1px solid var(--secClr);
+  color: var(--secClr);
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #fff;
+}
+.user-write .submitbtn{
+  background-color:var(--secClr);
+}
+.expenserwriteheader{
+  color:var(--secClr);
+}
+.card-header{
+  background-color:var(--secClr);
+}
+.card-footer{
+  color:var(--secClr);
 }
