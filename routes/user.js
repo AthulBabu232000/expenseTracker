@@ -125,5 +125,7 @@ router.post("/delete-expense", function (req, res) {
     res.redirect("/");
   });
 });
-
+router.get("/monthlydetails",function(req,res){
+  res.render('user/monthly-details')
+})
 module.exports = router;
