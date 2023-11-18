@@ -36,8 +36,8 @@
         <p class="card-text"><span class="font-weight-bold">Amount:</span> ₹{{this.inputAmount}}</p>
         <p class="card-text"><span class="font-weight-bold">Remarks: </span>{{this.inputRemarks}}</p>
      
-        {{#if this.filename}}
-        <img src="images/{{this.filename}}" class="img-fluid img-responsive d-block mx-auto" alt="" srcset="">
+        {{#if this.path}}
+        <img src="{{this.path}}" class="img-fluid img-responsive d-block mx-auto" alt="" srcset="">
         {{else}}
         <p class="card-text alert-warning p-2">No image uploaded</p>
         {{/if}}
