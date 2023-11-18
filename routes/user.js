@@ -5,10 +5,44 @@ var expenseHelper = require("../helpers/expense-helper");
 var collect = require("../config/collections");
 const multer = require("multer");
 var path = require("path");
+// 6611675cb11bbcd clientid for imgur
+// 49e06ada7b2a6b1c68d57d7a6a99f8b9cb61787b client secret for imgur
+
+var finalImageUrl='';
+const axios = require('axios');
+const fs = require('fs');
+
+const clientId = '6611675cb11bbcd';
+
+// Function to upload an image
+async function uploadImage(filePath) {
+  const file = fs.readFileSync(filePath, 'base64');
+
+  try {
+    const response = await axios.post(
+      'https://api.imgur.com/3/image',
+      { image: file },
+      {
+        headers: {
+          Authorization: `Client-ID ${clientId}`,
+        },
+      }
+    );
+
+    console.log('Image uploaded. Link:', response.data.data.link);
+    finalImageUrl=response.data.data.link;
+    return finalImageUrl;
+  } catch (error) {
+    console.error('Error uploading image:', error.message);
+  }
+}
+
+// Example usage
+
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "https://athulbabu232000.github.io/expenseTracker/public/images/"); // Uploads will be stored in the 'uploads/' directory
+    cb(null, "public/images/"); // image will be stored in public folder images folder 
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + path.extname(file.originalname)); // Append timestamp to the file name
@@ -70,13 +104,16 @@ router.get("/logout", (req, res) => {
 router.get("/noAccount", (req, res) => {
   res.render("/");
 });
-router.post("/user-write", upload.single("inputImage"), (req, res) => {
+router.post("/user-write", upload.single("inputImage"), async (req, res) => {
   let user = req.session.user;
 
   if (user) {
-    const body1 = req.body;
-    const body2 = req.file;
+    var body1 = req.body;
+    var body2 = req.file;
+    const imageUrl=await uploadImage(body2.path); // I should have used try catch block but it is fine for now
+ 
     const finalBody = Object.assign({}, body1, body2);
+    
     expenseHelper.enterDiary(finalBody).then((response) => {
       res.redirect("/");
     });
