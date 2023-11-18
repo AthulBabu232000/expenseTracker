@@ -111,7 +111,7 @@ router.post("/user-write", upload.single("inputImage"), async (req, res) => {
     var body1 = req.body;
     var body2 = req.file;
     const imageUrl=await uploadImage(body2.path); // I should have used try catch block but it is fine for now
- 
+   body2.path=imageUrl;
     const finalBody = Object.assign({}, body1, body2);
     
     expenseHelper.enterDiary(finalBody).then((response) => {
