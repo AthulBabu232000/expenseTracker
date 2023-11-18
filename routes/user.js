@@ -8,7 +8,7 @@ var path = require("path");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "public/images/"); // Uploads will be stored in the 'uploads/' directory
+    cb(null, "https://athulbabu232000.github.io/expenseTracker/public/images/"); // Uploads will be stored in the 'uploads/' directory
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + path.extname(file.originalname)); // Append timestamp to the file name
